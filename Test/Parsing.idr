@@ -1,9 +1,17 @@
+-- ------------------------------------------------------------- [ Parsing.idr ]
+-- Module    : Parsing.idr
+-- Copyright : (c) Jan de Muijnck-Hughes
+-- License   : see LICENSE
+-- --------------------------------------------------------------------- [ EOH ]
+
 module Test.Parsing
 
 import Lightyear
 import Lightyear.Strings
 
 import public Test.Utils
+
+%access public
 
 ||| Run an parse test that is expected to pass.
 |||
