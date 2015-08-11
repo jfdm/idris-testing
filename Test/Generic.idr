@@ -8,7 +8,6 @@ module Test.Generic
 
 import public Test.Utils
 
-
 genericTest : Show a => (title : Maybe String)
                      -> (given : a)
                      -> (expected : a)

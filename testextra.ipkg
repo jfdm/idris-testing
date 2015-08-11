@@ -1,5 +1,0 @@
-package testextra
-
-opts = "-p test -p lightyear"
-
-modules = Test.Parsing

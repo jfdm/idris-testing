@@ -1,4 +1,7 @@
 package test
 
+opts = "-p lightyear"
+
 modules = Test.Utils
+        , Test.Parsing
         , Test.Generic
