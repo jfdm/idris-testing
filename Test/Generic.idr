@@ -8,6 +8,14 @@ module Test.Generic
 
 import public Test.Utils
 
+%access public
+
+||| Run a generic test.
+|||
+||| @title     Optional Test title
+||| @given     The given string to parse
+||| @expected  The expected result
+||| @tFunc     The testing function to compare the results.
 genericTest : Show a => (title : Maybe String)
                      -> (given : a)
                      -> (expected : a)
