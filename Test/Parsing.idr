@@ -3,7 +3,7 @@ module Test.Parsing
 import Lightyear
 import Lightyear.Strings
 
-import Test.Utils
+import public Test.Utils
 
 ||| Run an parse test that is expected to pass.
 |||
@@ -19,7 +19,7 @@ parseTestG : Show a => (title : Maybe String)
                    -> (tFunc : a -> a -> Bool)
                    -> IO ()
 parseTestG title p inStr exp eq = do
-  putStrLn $ unwords ["Begin Test:", fromMaybe "Unnamed Test" title]
+  putStrLn $ unwords ["Test:", fromMaybe "Unnamed Test" title]
   case parse p inStr of
     Left err  => with List do
          putStrLn $ unlines [

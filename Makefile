@@ -2,18 +2,17 @@
 
 IDRIS := idris
 LIB   := test
-OPTS  :=
+EXTRA := testextra
 
 .PHONY: clean lib
 
 install: lib
-	${IDRIS} ${OPTS} --install ${LIB}.ipkg
-
-lib:
-	${IDRIS} ${OPTS} --build ${LIB}.ipkg
+	${IDRIS} --install ${LIB}.ipkg
+	${IDRIS} --install ${EXTRA}.ipkg
 
 clean:
 	${IDRIS} --clean ${LIB}.ipkg
+	${IDRIS} --clean ${EXTRA}.ipkg
 	find . -name "*~" -delete
 
 clobber: clean
@@ -21,11 +20,8 @@ clobber: clean
 
 check: clobber
 	${IDRIS} --checkpkg ${LIB}.ipkg
-
-test: install
-	$(MAKE) -C test build
-	(cd test; ./a.out)
-	$(MAKE) -C test clean
+	${IDRIS} --checkpkg ${EXTRA}.ipkg
 
 doc:
 	${IDRIS} --mkdoc ${LIB}.ipkg
+	${IDRIS} --mkdoc ${EXTRA}.ipkg
