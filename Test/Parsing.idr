@@ -75,4 +75,23 @@ parseTestB title p inStr = do
                , errLine
                ]
 
+|||
+||| @title Optional Test title
+||| @p     The parser to be testing
+||| @inStr The given string to parse
+canParse : Show a => (title : Maybe String)
+                   -> (p : Parser a)
+                   -> (inStr : String)
+                   -> IO ()
+canParse title p inStr = do
+  putStrLn $ unwords ["Begin Test:", fromMaybe "Unnamed Test" title]
+  case parse p inStr of
+    Left err  => with List do
+         putStrLn $ unlines [
+               errLine
+             , "Unexpected Parse Error:\n"
+             , err
+             , errLine
+             ]
+    Right res => pure ()
 -- --------------------------------------------------------------------- [ EOF ]
