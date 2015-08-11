@@ -45,6 +45,8 @@ parseTestG title p inStr exp eq = do
                , "Error:\n"
                , "Given:"
                , "\t" ++ show inStr
+               , "Made"
+               , "\t" ++ show res
                , "Expected:"
                , "\t" ++ show exp
                , errLine
