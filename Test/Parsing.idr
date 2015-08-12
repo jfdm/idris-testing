@@ -6,8 +6,8 @@
 
 module Test.Parsing
 
-import Lightyear
-import Lightyear.Strings
+import public Lightyear
+import public Lightyear.Strings
 
 import public Test.Utils
 
