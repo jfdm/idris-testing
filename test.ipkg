@@ -6,3 +6,4 @@ modules = Test.Utils
         , Test.Parsing
         , Test.Generic
         , Test.Random
+        , Test.Assertions
