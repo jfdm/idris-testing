@@ -65,7 +65,24 @@ genRndListKVUE : (Eq a, Eq b) =>
               -> (genA : Eff a [RND])
               -> (genB : Eff b [RND])
               -> Eff (List (Pair a b)) [RND]
-genRndListKVUE s l f g = genRndListUE s l (genKVPair f g)
+genRndListKVUE s l f g = do srand s; pure !(doGen l (genKVPair f g))
+  where
+    genElem : (Eq a, Eq b) => Eff (Pair a b) [RND] -> List (Pair a b) -> Eff (Pair a b) [RND]
+    genElem f xs = do
+      x <- f
+      if elem x xs
+        then genElem f xs
+        else if isJust $ lookup (fst x) xs
+          then genElem f xs
+          else pure x
+
+    doGen : (Eq a, Eq b) => Nat -> Eff (Pair a b) [RND] -> Eff (List (Pair a b)) [RND]
+    doGen Z     f = pure Nil
+    doGen (S n) f = do
+      xs <- doGen n f
+      x  <- genElem f xs
+      pure (x::xs)
+
 
 -- -------------------------------------------------------- [ Random Int Lists ]
 
