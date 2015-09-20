@@ -1,7 +1,8 @@
 package test
 
-opts = "-p lightyear"
+opts = "-p lightyear -p effects"
 
 modules = Test.Utils
         , Test.Parsing
         , Test.Generic
+        , Test.Random

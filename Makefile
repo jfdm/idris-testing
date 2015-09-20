@@ -5,6 +5,9 @@ LIB   := test
 
 .PHONY: clean lib
 
+lib:
+	${IDRIS} --build ${LIB}.ipkg
+
 install: lib
 	${IDRIS} --install ${LIB}.ipkg
 
