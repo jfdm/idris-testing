@@ -6,7 +6,7 @@
 
 module Test.Utils
 
-%access public
+%access export
 
 fancyLine : Nat -> Char -> String
 fancyLine l c = pack $ replicate l c

@@ -10,6 +10,8 @@ module Test.Random
 import Effects
 import Effect.Random
 
+%access export
+
 -- --------------------------------------------------------- [ List Generators ]
 
 genRndListE : (seed      : Integer)

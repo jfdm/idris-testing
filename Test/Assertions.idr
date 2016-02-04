@@ -9,7 +9,7 @@ import public Test.Utils
 
 import Test.Generic
 
-%access public
+%access export
 
 assertTrue : Bool -> IO ()
 assertTrue b = genericTest (Just "Assert True") b True (==)

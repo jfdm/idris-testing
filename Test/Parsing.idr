@@ -11,7 +11,7 @@ import public Lightyear.Strings
 
 import public Test.Utils
 
-%access public
+%access export
 
 ||| Run an parse test that is expected to pass.
 |||

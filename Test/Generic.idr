@@ -8,7 +8,7 @@ module Test.Generic
 
 import public Test.Utils
 
-%access public
+%access export
 
 ||| Run a generic test.
 |||
