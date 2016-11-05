@@ -6,3 +6,12 @@ modules = Test.Utils
         , Test.Generic
         , Test.Random
         , Test.Assertions
+
+brief = "Various utilities to aid in the testing of things in Idris."
+readme = README.org
+license = BSD-3
+author = "Jan de Muijnck-Hughes"
+
+homepage = https://github.com/jfdm/idris-testing
+sourceloc = https://github.com/jfdm/idris-testing
+bugtracker = https://github.com/jfdm/idris-testing/issues
