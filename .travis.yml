@@ -2,6 +2,9 @@ sudo: false
 
 language: haskell
 
+git:
+  depth: 3
+
 branches:
   only:
     - master
@@ -17,14 +20,12 @@ before_install:
   - echo 'Stack...' && echo -en 'travis_fold:start:before_install.stack\\r'
   - travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
   - chmod a+x ~/.local/bin/stack
+  - travis_wait stack +RTS -N2 -RTS --skip-ghc-check setup
+  - travis_retry stack update -v
   - echo -en 'travis_fold:end:before_install.stack\\r'
 
-  - travis_retry stack update -v
-  - git --version
-  - stack --version
-
   - echo 'Idris...' && echo -en 'travis_fold:start:before_install.idris\\r'
-  - stack +RTS -N2 -RTS install idris
+  - travis_wait stack +RTS -N2 -RTS install idris
   - echo -en 'travis_fold:end:before_install.idris\\r'
 
   - echo 'Lightyear...' && echo -en 'travis_fold:start:script.lightyear\\r'
@@ -36,4 +37,7 @@ before_install:
 
 
 script:
+  - git --version
+  - stack --version
+  - idris --info
   - make lib
