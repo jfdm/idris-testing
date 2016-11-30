@@ -1,5 +1,15 @@
 package test
 
+author     = Jan de Muijnck-Hughes
+maintainer = Jan de Muijnck-Hughes
+license    = BSD3 but see LICENSE for more information
+brief      = "Simple Testing Library."
+readme     = README.md
+
+sourceloc  = git://git@github.com:jfdm/idris-testing.git
+bugtracker = http://www.github.com/jfdm/idris-testing/issues
+
+
 pkgs = effects
 
 modules = Test.Utils
