@@ -1,0 +1,39 @@
+sudo: false
+
+language: haskell
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+    - $HOME/.stack/
+
+before_install:
+  - mkdir -p ~/.local/bin
+  - export PATH=~/.local/bin:$PATH
+
+  - echo 'Stack...' && echo -en 'travis_fold:start:before_install.stack\\r'
+  - travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
+  - chmod a+x ~/.local/bin/stack
+  - echo -en 'travis_fold:end:before_install.stack\\r'
+
+  - travis_retry stack update -v
+  - git --version
+  - stack --version
+
+  - echo 'Idris...' && echo -en 'travis_fold:start:before_install.idris\\r'
+  - stack +RTS -N2 -RTS install idris
+  - echo -en 'travis_fold:end:before_install.idris\\r'
+
+  - echo 'Lightyear...' && echo -en 'travis_fold:start:script.lightyear\\r'
+  - git clone https://github.com/ziman/lightyear.git .lightyear
+  - cd .lightyear
+  - idris --install lightyear.ipkg
+  - cd ..
+  - echo -en 'travis_fold:end:before_install.lightyear\\r'
+
+
+script:
+  - make lib
