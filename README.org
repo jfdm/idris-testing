@@ -1,5 +1,6 @@
 #+TITLE: Idris Test Utils
 
-[![Build Status](https://travis-ci.org/jfdm/idris-testing.svg?branch=master)](https://travis-ci.org/jfdm/idris-testing)
+#+ATTR_HTML: alt="Build Status"
+[[https://travis-ci.org/jfdm/idris-testing][file:https://travis-ci.org/jfdm/idris-testing.svg?branch=master]]
 
 Various utilities to aid in the testing of things in Idris.
