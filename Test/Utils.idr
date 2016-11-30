@@ -23,9 +23,19 @@ errLine = fancyLine 40 '+'
 heading : String -> String
 heading n = unlines [infoLine, n, infoLine]
 
-runTests : List (IO ()) -> IO ()
-runTests Nil     = do putStrLn "All Tests have passed"; putStrLn succLine
-runTests (t::ts) = do t; runTests ts
+namespace NonReporting
+  runTests : List (IO a) -> IO ()
+  runTests Nil     = do putStrLn "All Tests have passed"; putStrLn succLine
+  runTests (t::ts) = do t; runTests ts
+
+namespace Reporting
+  runTests : List (IO a) -> IO (List a)
+  runTests Nil     = pure Nil
+  runTests (x::xs) = do
+       r  <- x
+       rs <- Reporting.runTests xs
+       pure (r::rs)
+
 
 
 -- --------------------------------------------------------------------- [ EOF ]
