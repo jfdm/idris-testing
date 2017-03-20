@@ -1,3 +1,5 @@
 #+TITLE: Idris Test Utils
 
+[[https://travis-ci.org/jfdm/idris-testing][https://travis-ci.org/jfdm/idris-testing.svg?branch=master]]
+
 Various utilities to aid in the testing of things in Idris.
