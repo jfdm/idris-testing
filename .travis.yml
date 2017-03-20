@@ -1,0 +1,2 @@
+language: nix
+script: nix-shell -A idris-test --command "idris --build test.ipkg"
