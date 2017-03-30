@@ -5,36 +5,28 @@
 # ---------------------------------------------------------------------- [ EOH ]
 
 IDRIS  := idris
-LIBA   := test
-LIBB   := testparse
+LIB    := test
 
-.PHONY: clean lib install clobber checkLib checkLibParse doc
+.PHONY: clean lib install clobber check doc
 
 lib:
-	${IDRIS} --build ${LIBA}.ipkg
-	${IDRIS} --build ${LIBB}.ipkg
+	${IDRIS} --build ${LIB}.ipkg
 
 install: lib
-	${IDRIS} --install ${LIBA}.ipkg
-	${IDRIS} --install ${LIBB}.ipkg
+	${IDRIS} --install ${LIB}.ipkg
 
 clean:
-	${IDRIS} --clean ${LIBA}.ipkg
-	${IDRIS} --clean ${LIBB}.ipkg
+	${IDRIS} --clean ${LIB}.ipkg
+	${IDRIS} --clean ${LIB}.ipkg
 	find . -name "*~" -delete
 
 clobber: clean
 	find . -name "*.ibc" -delete
 
-checkLib: clobber
-	${IDRIS} --checkpkg ${LIBA}.ipkg
-
-checkLibParse: clobber
-	${IDRIS} --checkpkg ${LIBB}.ipkg
+check: clobber
+	${IDRIS} --checkpkg ${LIB}.ipkg
 
 doc:
-	${IDRIS} --mkdoc ${LIBA}.ipkg
-	${IDRIS} --mkdoc ${LIBB}.ipkg
-
+	${IDRIS} --mkdoc ${LIB}.ipkg
 
 # ---------------------------------------------------------------------- [ EOF ]
